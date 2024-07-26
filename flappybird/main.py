@@ -3,6 +3,7 @@ import mediapipe
 from random import randint
 from numpy import where, ndarray
 import imutils
+import streamlit as st 
 
 def GenWall(h: int) -> int:
     return randint(101, h-40)
@@ -40,7 +41,7 @@ def ShowBird(img: ndarray, x: int, y: int, bird: ndarray) -> None:
 
 def ReadBirdFile() -> ndarray:
     """read and resize bird photo"""
-    bird = cv2.imread("galery/sprites/bird.png")
+    bird = cv2.imread("gallery/sprites/bird.png")
     bird = cv2.resize(bird, [50,50])
     return bird
 
@@ -106,6 +107,23 @@ def main() -> None:
     except KeyboardInterrupt:
         GameOver(score, img)
 
-if __name__ == "__main__":
+
+st.set_page_config(page_title="Flap-to-Fit",
+                   page_icon="gallery/sprites/bird.png",
+                   )
+
+
+st.title(" :rainbow[Flap-to-Fit: Nose-Controlled Game]")
+st.write("Stay active while having fun with our Flap-to-Fit game!")
+
+
+st.image("gallery/sprites/game_image.png", use_column_width=True)
+
+
+st.write("Use your nose to control the game! Move up and down to navigate through obstacles.")
+
+
+if st.button("Start Game", type="primary"):
+    st.write("Game is starting...")
     main()
 
