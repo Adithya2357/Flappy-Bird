@@ -30,7 +30,7 @@ def isCollision(x: int, y: int, wallBuf: list) -> bool:
                 return True
     return False
 
-def Don't ShowBird(img: ndarray, x: int, y: int, bird: ndarray) -> None:
+def ShowBird(img: ndarray, x: int, y: int, bird: ndarray) -> None:
     """show bird in pose nose of player"""
     y = y - 20
     x = x - 30
